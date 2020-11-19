@@ -1,0 +1,5 @@
+name: AusterSystem
+main: at.auster.system.AusterSystem
+version: '0.1-ALPHA'
+author: Austerzockt
+api-version: 1.16
