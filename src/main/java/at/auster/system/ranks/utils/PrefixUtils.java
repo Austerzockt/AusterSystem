@@ -8,8 +8,6 @@ import java.util.UUID;
 public class PrefixUtils {
 
     public static String getPrefix(UUID uuid)  {
-        if (TABAPI.getPlayer(uuid) == null) { return ""; }
-
             return TABAPI.getPlayer(uuid).getOriginalValue(EnumProperty.TABPREFIX);
 
     }
@@ -25,5 +23,10 @@ public class PrefixUtils {
     }
     public static void setPrefix(UUID uuid, String prefix) {
         setPrefix(uuid, prefix, false);
+    }
+    public static void removePrefix(UUID uuid) {
+        TABAPI.getPlayer(uuid).setValuePermanently(EnumProperty.TABPREFIX, "");
+        TABAPI.getPlayer(uuid).setValuePermanently(EnumProperty.TAGPREFIX, "");
+
     }
 }
