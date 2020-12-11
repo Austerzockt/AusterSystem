@@ -11,11 +11,17 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
 public class RankUtils {
     private static LuckPerms luckPerms = LuckPermsProvider.get();
+    public static List<String> getAllRanks() {
+        List<String> list = new ArrayList<>();
+        luckPerms.getGroupManager().getLoadedGroups().forEach(rank -> list.add(rank.getName()));
+        return list;
+    }
     public static List<String> getRanks(UUID uuid) {
         Player p = Bukkit.getPlayer(uuid);
         List<String> returns = new ArrayList<>();
@@ -28,7 +34,11 @@ public class RankUtils {
     return returns;
 
     }
+    public static boolean isRank(String group) {
+        return getAllRanks().contains(group);
+    }
     public static void setRank(UUID uuid, String group) {
+        if (!isRank(group)) return;
         getRanks(uuid).forEach(s -> removeRank(uuid, s) );
     addRank(uuid, group);
 
