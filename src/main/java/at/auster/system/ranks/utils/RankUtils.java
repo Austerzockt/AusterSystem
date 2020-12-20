@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class RankUtils {
-    private static LuckPerms luckPerms = LuckPermsProvider.get();
+    private static final LuckPerms luckPerms = LuckPermsProvider.get();
     public static List<String> getAllRanks() {
         List<String> list = new ArrayList<>();
         luckPerms.getGroupManager().getLoadedGroups().forEach(rank -> list.add(rank.getName()));
@@ -43,16 +43,16 @@ public class RankUtils {
     addRank(uuid, group);
 
     }
-    public static void addRank(UUID uuid, String groupname) {
+    public static void addRank(UUID uuid, String group_name) {
         User u = luckPerms.getUserManager().getUser(uuid);
-        Group group = luckPerms.getGroupManager().getGroup(groupname);
+        Group group = luckPerms.getGroupManager().getGroup(group_name);
 
         u.data().add(InheritanceNode.builder(group).build());
         luckPerms.getUserManager().saveUser(u);
     }
-    public static void removeRank(UUID uuid, String groupname) {
+    public static void removeRank(UUID uuid, String group_name) {
         User u = luckPerms.getUserManager().getUser(uuid);
-        Group group = luckPerms.getGroupManager().getGroup(groupname);
+        Group group = luckPerms.getGroupManager().getGroup(group_name);
         u.data().remove(InheritanceNode.builder(group).build());
         luckPerms.getUserManager().saveUser(u);
     }

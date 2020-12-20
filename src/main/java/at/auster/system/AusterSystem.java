@@ -19,8 +19,7 @@ public class AusterSystem extends JavaPlugin {
         Bukkit.getPluginCommand("prefix").setTabCompleter(prefixCommand);
         RankCommand rankCommand = new RankCommand();
         Bukkit.getPluginCommand("rank").setExecutor(rankCommand);
-        MessageHandler handler = new MessageHandler(MessageHandler.Languages.ENGLISH);
-        Bukkit.getConsoleSender().sendMessage(handler.getMessage(MessageHandler.Messages.NOPERMS).toString());
+
         }
 
     @Override
