@@ -1,1 +1,7 @@
-value: key
+
+#All Settings in regards to the BuildMode
+build:
+  #in which worlds will the buildmode be used
+  disable-world-edit: false
+  worlds:
+    - lobby

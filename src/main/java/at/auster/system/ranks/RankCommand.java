@@ -20,7 +20,7 @@ public class RankCommand implements CommandExecutor, TabCompleter {
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
         if (sender.hasPermission("system.rank")) {
             if (args.length == 0) {
-                sender.sendMessage(new TextComponent(ChatColor.RED + "/rank [set/add/remove] [PlayerName] [Rank]"));
+                sender.sendMessage(ChatColor.RED + "/rank [set/add/remove] [PlayerName] [Rank]");
             } else if (args.length == 3) {
                 Player t = Bukkit.getPlayer(args[1]);
                 if (t != null && RankUtils.getAllRanks().contains(args[2])) {

@@ -21,9 +21,17 @@ public class Config extends YamlConfiguration {
     public Config(String name, Plugin plugin) {
         this.name = name;
         this.plugin = plugin;
-        file = new File(AusterSystem.getInstance().getDataFolder(), name.endsWith(".yml") ? name : name + ".yml");        if (!file.exists()) {
+        file = new File(AusterSystem.getInstance().getDataFolder(), name.endsWith(".yml") ? name : name + ".yml");
+        if (!file.exists()) {
             InputStream is = AusterSystem.getInstance().getResource(name + ".yml");
             AusterSystem.getInstance().saveResource(name + ".yml", false);
+        }
+        try {
+            loadConfig();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InvalidConfigurationException e) {
+            e.printStackTrace();
         }
     }
     private void loadConfig() throws IOException, InvalidConfigurationException {

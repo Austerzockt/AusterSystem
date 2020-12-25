@@ -20,7 +20,7 @@ public class PrefixCommand implements CommandExecutor, TabCompleter {
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
         if (sender.hasPermission("system.prefix")) {
             if (args.length == 0) {
-                sender.sendMessage(new TextComponent(ChatColor.RED + "/prefix [set/remove] [Playername] [Prefix]"));
+                sender.sendMessage(ChatColor.RED + "/prefix [set/remove] [Playername] [Prefix]");
             } else if (args.length >= 3) {
                 //SET Prefix
                 if (args[0].equalsIgnoreCase("set")) {
@@ -33,7 +33,7 @@ public class PrefixCommand implements CommandExecutor, TabCompleter {
                         }
                         String prefix = sb.toString();
                         PrefixUtils.setPrefix(t.getUniqueId(), prefix);
-                        sender.sendMessage(new TextComponent(ChatColor.GOLD + "Set Prefix for Player " + t.getName() + " to " + ChatColor.translateAlternateColorCodes('&', prefix)));
+                        sender.sendMessage(ChatColor.GOLD + "Set Prefix for Player " + t.getName() + " to " + ChatColor.translateAlternateColorCodes('&', prefix));
                     }
                     //REMOVE Prefix
                 }
@@ -48,7 +48,7 @@ public class PrefixCommand implements CommandExecutor, TabCompleter {
             }
 
         } else {
-            sender.sendMessage(new TextComponent(ChatColor.RED + "You don't have the permission to use this command"));
+            sender.sendMessage(ChatColor.RED + "You don't have the permission to use this command");
         }
         return true;
     }
